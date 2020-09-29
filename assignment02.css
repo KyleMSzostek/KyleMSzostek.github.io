@@ -1,4 +1,12 @@
 /* --- put your css here --- */ 
+div#positionMe {position: relative; top: 0px;}
+  
+img[alt="bird icon"]{
+    position: absolute;
+    left: 250px;
+    bottom: -50px;
+  }
+
 input:focus {
     background-color: pink;
   }
@@ -29,7 +37,7 @@ input:focus {
   
   img[alt="dog icon"]{
     position: relative;
-    left: 50px;
+    left: -50px;
     bottom: 150px;
   }
   
@@ -77,6 +85,10 @@ input:focus {
   }
   body {
     background-color: skyblue;
+  }
+  
+  p.notused {
+    background-color: orange;
   }
   
   /* external css is imported into html using the <link> tag in the <head> section, as shown below.
