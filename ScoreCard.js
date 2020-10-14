@@ -237,7 +237,7 @@ function add1 (elem) {
     elem.children[2].innerHTML = currentScore + 1;
   }
   elem.children[3].innerHTML = diff(elem.children[1].innerHTML,elem.children[2].innerHTML);
-  totalsPlus();
+  totalsPlus(elem.children[2].innerHTML,elem.children[3].innerHTML);
 }
 
  function sub1 (elem) {
@@ -252,8 +252,8 @@ function add1 (elem) {
     elem.children[2].innerHTML = currentScore - 1;
   }
    elem.children[3].innerHTML = diff(elem.children[1].innerHTML,elem.children[2].innerHTML);
-totalsSub();
- }
+totalsSub(elem.children[2].innerHTML,elem.children[3].innerHTML);
+}
 
  function clr (elem) {
     totalsClear(elem.children[2].innerHTML,elem.children[3].innerHTML)
@@ -272,15 +272,27 @@ function diff (a, b){
 function totalsClear (a,b){ 
   if(a !== "-" && b !== "-"){
   let currentScore = elem[19].children[2].innerHTML;
+    let currentPar = elem[19].children[1].innerHTML;
+    currentPar = Number.parseInt(currentPar);
       currentScore = Number.parseInt(currentScore);
-      elem[19].children[2].innerHTML = currentScore - a;
+    if(currentScore - a == 0){ elem[19].children[2].innerHTML = "-"}
+     else{
+      elem[19].children[2].innerHTML = currentScore - a;}
+    
     let currentOver = elem[19].children[3].innerHTML;
-      currentOver = Number.parseInt(currentOver);
-      elem[19].children[3].innerHTML = currentOver - b;
-    }}
+     if(currentOver - b ==0){
+      elem[19].children[3].innerHTML = "-"}
+    else
+    {elem[19].children[3].innerHTML = currentOver - b;}
+    
+    if(elem[19].children[1].innerHTML == "4"){ 
+        elem[19].children[1].innerHTML = "-";}
+    else{
+          elem[19].children[1].innerHTML = elem[19].children[1].innerHTML-4;
+    }}}
 
 
-function totalsSub (){ 
+function totalsSub (a,b){ 
       if(elem[19].children[2].innerHTML == "1") 
         elem[19].children[2].innerHTML = "-";
       else {
@@ -294,9 +306,16 @@ function totalsSub (){
         let currentScore = elem[19].children[3].innerHTML;
         currentScore = Number.parseInt(currentScore);
         elem[19].children[3].innerHTML = currentScore + 1;
-      }}
+        
+        
+      if(a == "-" && b == "-"){
+        let currentScore = elem[19].children[1].innerHTML;
+        currentScore = Number.parseInt(currentScore);
+          elem[19].children[1].innerHTML = currentScore - 4;
+      }
+ }}
 
-function totalsPlus (){ 
+function totalsPlus (a,b){ 
         if(elem[19].children[2].innerHTML == "-") 
           elem[19].children[2].innerHTML = "1";
         else {
@@ -310,7 +329,17 @@ function totalsPlus (){
           let currentScore = elem[19].children[3].innerHTML;
           currentScore = Number.parseInt(currentScore);
           elem[19].children[3].innerHTML = currentScore - 1;
-        }}
+        }
+        if(a == "1" && b == "3"){
+        let currentScore = elem[19].children[1].innerHTML;
+        if(currentScore == "-"){
+          elem[19].children[1].innerHTML = "4";
+        }
+        else{
+        currentScore = Number.parseInt(currentScore);
+          elem[19].children[1].innerHTML = currentScore + 4;}}}
+      
+
 
 
 
