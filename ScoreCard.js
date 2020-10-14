@@ -53,6 +53,9 @@ elem[17]
 
 elem[18]
   = document.getElementById("18");
+  
+elem[19]
+  = document.getElementById("totals");
 
 // display the number of children (all td elements)
 // console.log(elem.children.length);
@@ -234,6 +237,7 @@ function add1 (elem) {
     elem.children[2].innerHTML = currentScore + 1;
   }
   elem.children[3].innerHTML = diff(elem.children[1].innerHTML,elem.children[2].innerHTML);
+  totalsPlus();
 }
 
  function sub1 (elem) {
@@ -248,9 +252,11 @@ function add1 (elem) {
     elem.children[2].innerHTML = currentScore - 1;
   }
    elem.children[3].innerHTML = diff(elem.children[1].innerHTML,elem.children[2].innerHTML);
+totalsSub();
  }
 
  function clr (elem) {
+    totalsClear(elem.children[2].innerHTML,elem.children[3].innerHTML)
     elem.children[2].innerHTML = "-";
     elem.children[3].innerHTML = "-";
  }
@@ -261,6 +267,50 @@ function diff (a, b){
   else
   return a - b;
 }
+
+
+function totalsClear (a,b){ 
+  if(a !== "-" && b !== "-"){
+  let currentScore = elem[19].children[2].innerHTML;
+      currentScore = Number.parseInt(currentScore);
+      elem[19].children[2].innerHTML = currentScore - a;
+    let currentOver = elem[19].children[3].innerHTML;
+      currentOver = Number.parseInt(currentOver);
+      elem[19].children[3].innerHTML = currentOver - b;
+    }}
+
+
+function totalsSub (){ 
+      if(elem[19].children[2].innerHTML == "1") 
+        elem[19].children[2].innerHTML = "-";
+      else {
+        let currentScore = elem[19].children[2].innerHTML;
+        currentScore = Number.parseInt(currentScore);
+        elem[19].children[2].innerHTML = currentScore - 1;
+      }
+      if(elem[19].children[3].innerHTML == "3") 
+        elem[19].children[3].innerHTML = "-";
+      else {
+        let currentScore = elem[19].children[3].innerHTML;
+        currentScore = Number.parseInt(currentScore);
+        elem[19].children[3].innerHTML = currentScore + 1;
+      }}
+
+function totalsPlus (){ 
+        if(elem[19].children[2].innerHTML == "-") 
+          elem[19].children[2].innerHTML = "1";
+        else {
+          let currentScore = elem[19].children[2].innerHTML;
+          currentScore = Number.parseInt(currentScore);
+          elem[19].children[2].innerHTML = currentScore + 1;
+        }
+        if(elem[19].children[3].innerHTML == "-") 
+          elem[19].children[3].innerHTML = "3";
+        else {
+          let currentScore = elem[19].children[3].innerHTML;
+          currentScore = Number.parseInt(currentScore);
+          elem[19].children[3].innerHTML = currentScore - 1;
+        }}
 
 
 
