@@ -324,7 +324,10 @@ function totalsPlus (a,b){
           elem[19].children[2].innerHTML = currentScore + 1;
         }
         if(elem[19].children[3].innerHTML == "-") 
-          elem[19].children[3].innerHTML = "3";
+          elem[19].children[3].innerHTML = "3"; 
+        else if(a == "1" && b == "3"){let currentScore = elem[19].children[3].innerHTML;
+            currentScore = Number.parseInt(currentScore);
+            elem[19].children[3].innerHTML = currentScore + 3;}
         else {
           let currentScore = elem[19].children[3].innerHTML;
           currentScore = Number.parseInt(currentScore);
@@ -337,7 +340,7 @@ function totalsPlus (a,b){
         }
         else{
         currentScore = Number.parseInt(currentScore);
-          elem[19].children[1].innerHTML = currentScore + 4;}}}
+          elem[19].children[1].innerHTML = currentScore + 4}}}
       
 
 
