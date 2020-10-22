@@ -101,7 +101,9 @@ function undoLastShot() {
 	//	clubs = resetAllClubDistances();
 	//	clubs = JSON.parse(localStorage.getItem("clubs"));
 	//}
+	clubs = JSON.parse(localStorage.getItem("clubsUndo"));
 	window.location.href = "clubDistanceList.html"; 
+
 	return clubs;
 
 }
