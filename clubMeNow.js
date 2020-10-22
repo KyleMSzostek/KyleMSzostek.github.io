@@ -105,6 +105,8 @@ for (let i = 0; i < clubs.length; i++) {
 	cell5.innerHTML = "<button class='btn btn-success cmn_noPadding cmn_fullHeight' onclick='displayClubDistanceEntryForm(" + i + ");'>&nbsp;&nbsp;+&nbsp;&nbsp;</button>";
 	cell6.innerHTML = clubs[i][2]; // clubName
 	// cell6.innerHTML = clubs[i][2] + ", " + clubs[i][7] + "&deg;"; 
+	let str = JSON.stringify(clubs);
+	localStorage.setItem("clubs", str);
 }
 }
 
