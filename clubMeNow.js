@@ -91,13 +91,38 @@ function displayClubDistanceEntryForm(c) {
 
 // replace the current "clubs" array with the previous one
 function undoLastShot() {
-	var verynice = 0;
-	verynice = clubs.length -1;
-	cell1.innerHTML = Math.round(clubs[verynice][3]); // avgDist
-	cell2.innerHTML = Math.round(clubs[verynice][4]); // minDist
-	cell3.innerHTML = Math.round(clubs[verynice][5]); // maxDist
-	cell4.innerHTML = Math.round(clubs[verynice][6]); // numOfShots
-	window.location.href = "clubDistanceList.html"; 
+// select the HTML table <tbody> element
+let tblbody = document.getElementById('clubTable').children[0]; 
+// append one row to HTML table for each row in "clubs" array
+for (let i = 0; i < clubs.length; i++) {
+	// create an empty row
+	let row = tblbody.insertRow(i+1); // skip first row (column headings)
+	// create an empty cell for each column to appear in HTML table
+	let cell0 = row.insertCell(0); // clubAbbrev
+	let cell1 = row.insertCell(1); // avgDist
+	let cell2 = row.insertCell(2); // minDist
+	let cell3 = row.insertCell(3); // maxDist
+	let cell4 = row.insertCell(4); // numOfShots
+	let cell5 = row.insertCell(5); // ("+" button)
+	let cell6 = row.insertCell(6); // clubName
+	// right align only the cells that need to be right aligned
+	cell0.className = "cmn_hidden"; // clubAbbrev
+	cell1.className = "cmn_alignRight cmn_fullHeight"; // avgDist
+	cell2.className = "cmn_alignRight cmn_hidden"; // minDist
+	cell3.className = "cmn_alignRight cmn_fullHeight"; // maxDist
+	cell4.className = "cmn_alignRight cmn_hidden"; // numOfShots
+	cell5.className = ""; // ("+" button)
+	cell6.className = "cmn_fullHeight";
+	// populate HTML table with data from "clubs" array
+	cell0.innerHTML = clubs[i-1][1]; // clubAbbrev
+	cell1.innerHTML = Math.round(clubs[i-1][3]); // avgDist
+	cell2.innerHTML = Math.round(clubs[i-1][4]); // minDist
+	cell3.innerHTML = Math.round(clubs[i-1][5]); // maxDist
+	cell4.innerHTML = Math.round(clubs[i-1][6]); // numOfShots
+	cell5.innerHTML = "<button class='btn btn-success cmn_noPadding cmn_fullHeight' onclick='displayClubDistanceEntryForm(" + i + ");'>&nbsp;&nbsp;+&nbsp;&nbsp;</button>";
+	cell6.innerHTML = clubs[i][2]; // clubName
+	// cell6.innerHTML = clubs[i][2] + ", " + clubs[i][7] + "&deg;"; 
+}
 }
 
 // create a new (default) "clubs" array
