@@ -107,6 +107,7 @@ for (let i = 0; i < clubs.length; i++) {
 	// cell6.innerHTML = clubs[i][2] + ", " + clubs[i][7] + "&deg;"; 
 	let str = JSON.stringify(clubs);
 	localStorage.setItem("clubs", str);
+	window.location.href = "clubDistanceList.html"; 
 }
 }
 
