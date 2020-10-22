@@ -99,9 +99,9 @@ function undoLastShot() {
 	//}
 	let str = JSON.stringify(clubs);
 	clubs = JSON.parse(localStorage.getItem("clubsUndo"));
-	window.location.href = "clubDistanceList.html"; 
 	str = JSON.stringify(clubs);
-		localStorage.setItem("clubs", str);
+	localStorage.setItem("clubs", str);
+	window.location.href = "clubDistanceList.html"; 
 
 
 }
