@@ -94,7 +94,7 @@ function undoLastShot() {
 // select the HTML table <tbody> element
 let tblbody = document.getElementById('clubTable').children[0]; 
 // append one row to HTML table for each row in "clubs" array
-for (let i = 0; i < clubs.length-1; i++) {
+for (let i = 0; i < clubs.length; i++) {
 
 	// populate HTML table with data from "clubs" array
 	cell0.innerHTML = clubs[i-1][1]; // clubAbbrev
