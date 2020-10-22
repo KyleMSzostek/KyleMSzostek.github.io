@@ -96,17 +96,8 @@ let tblbody = document.getElementById('clubTable').children[0];
 // append one row to HTML table for each row in "clubs" array
 for (let i = 0; i < clubs.length; i++) {
 
-	// populate HTML table with data from "clubs" array
-	cell0.innerHTML = clubs[i-1][1]; // clubAbbrev
-	cell1.innerHTML = Math.round(clubs[i-1][3]); // avgDist
-	cell2.innerHTML = Math.round(clubs[i-1][4]); // minDist
-	cell3.innerHTML = Math.round(clubs[i-1][5]); // maxDist
-	cell4.innerHTML = Math.round(clubs[i-1][6]); // numOfShots
-	cell5.innerHTML = "<button class='btn btn-success cmn_noPadding cmn_fullHeight' onclick='displayClubDistanceEntryForm(" + i + ");'>&nbsp;&nbsp;+&nbsp;&nbsp;</button>";
-	cell6.innerHTML = clubs[i][2]; // clubName
-	// cell6.innerHTML = clubs[i][2] + ", " + clubs[i][7] + "&deg;"; 
 	let str = JSON.stringify(clubs);
-	localStorage.setItem("clubs", str);
+		localStorage.getItem("clubsUndo", str);
 	window.location.href = "clubDistanceList.html"; 
 }
 }
