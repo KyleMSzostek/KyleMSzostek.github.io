@@ -97,8 +97,11 @@ function undoLastShot() {
 	//	clubs = resetAllClubDistances();
 	//	clubs = JSON.parse(localStorage.getItem("clubs"));
 	//}
+	let str = JSON.stringify(clubs);
 	clubs = JSON.parse(localStorage.getItem("clubsUndo"));
 	window.location.href = "clubDistanceList.html"; 
+	str = JSON.stringify(clubs);
+		localStorage.setItem("clubs", str);
 
 
 }
