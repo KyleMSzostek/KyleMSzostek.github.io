@@ -91,15 +91,11 @@ function displayClubDistanceEntryForm(c) {
 
 // replace the current "clubs" array with the previous one
 function undoLastShot() {
-// select the HTML table <tbody> element
-let tblbody = document.getElementById('clubTable').children[0]; 
-// append one row to HTML table for each row in "clubs" array
-for (let i = 0; i < clubs.length; i++) {
 
 	let str = JSON.stringify(clubs);
 		localStorage.getItem("clubsUndo", str);
 	window.location.href = "clubDistanceList.html"; 
-}
+
 }
 
 // create a new (default) "clubs" array
