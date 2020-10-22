@@ -91,8 +91,8 @@ function displayClubDistanceEntryForm(c) {
 
 // replace the current "clubs" array with the previous one
 function undoLastShot() {
-	let verynice = 0;
-	verynice = interactionArray.length -1;
+	var verynice = 0;
+	verynice = clubs.length -1;
 	cell1.innerHTML = Math.round(clubs[verynice][3]); // avgDist
 	cell2.innerHTML = Math.round(clubs[verynice][4]); // minDist
 	cell3.innerHTML = Math.round(clubs[verynice][5]); // maxDist
