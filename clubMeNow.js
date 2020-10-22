@@ -94,25 +94,8 @@ function undoLastShot() {
 // select the HTML table <tbody> element
 let tblbody = document.getElementById('clubTable').children[0]; 
 // append one row to HTML table for each row in "clubs" array
-for (let i = 0; i < clubs.length; i++) {
-	// create an empty row
-	let row = tblbody.insertRow(i+1); // skip first row (column headings)
-	// create an empty cell for each column to appear in HTML table
-	let cell0 = row.insertCell(0); // clubAbbrev
-	let cell1 = row.insertCell(1); // avgDist
-	let cell2 = row.insertCell(2); // minDist
-	let cell3 = row.insertCell(3); // maxDist
-	let cell4 = row.insertCell(4); // numOfShots
-	let cell5 = row.insertCell(5); // ("+" button)
-	let cell6 = row.insertCell(6); // clubName
-	// right align only the cells that need to be right aligned
-	cell0.className = "cmn_hidden"; // clubAbbrev
-	cell1.className = "cmn_alignRight cmn_fullHeight"; // avgDist
-	cell2.className = "cmn_alignRight cmn_hidden"; // minDist
-	cell3.className = "cmn_alignRight cmn_fullHeight"; // maxDist
-	cell4.className = "cmn_alignRight cmn_hidden"; // numOfShots
-	cell5.className = ""; // ("+" button)
-	cell6.className = "cmn_fullHeight";
+for (let i = 0; i < clubs.length-1; i++) {
+
 	// populate HTML table with data from "clubs" array
 	cell0.innerHTML = clubs[i-1][1]; // clubAbbrev
 	cell1.innerHTML = Math.round(clubs[i-1][3]); // avgDist
