@@ -55,6 +55,7 @@
     let str = JSON.stringify(clubs);
 	clubs = JSON.parse(localStorage.getItem("clubs"));
 	n = clubs.length;
+	if (n>=15){alert("Hello! I am an alert box!!");}
 	clubs[n] = ([0, "Cst", clubName,   0, 0, 0, 0, 0.0,   0,   0]);
 	str = JSON.stringify(clubs);
 	localStorage.setItem("clubs", str);
