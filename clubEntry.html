@@ -51,10 +51,11 @@
 	let newClubDistances;
 	
 	function addClub() {
+	clubName = document.getElementById('clubName')
     let str = JSON.stringify(clubs);
 	clubs = JSON.parse(localStorage.getItem("clubs"));
 	n = clubs.length;
-	clubs[n] = ([0, "Cst", 'clubName',   0, 0, 0, 0, 0.0,   0,   0]);
+	clubs[n] = ([0, "Cst", clubName,   0, 0, 0, 0, 0.0,   0,   0]);
 	str = JSON.stringify(clubs);
 	localStorage.setItem("clubs", str);
 	window.location.href = "clubDistanceList.html"; 
