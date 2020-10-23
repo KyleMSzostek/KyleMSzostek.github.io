@@ -54,7 +54,7 @@
     let str = JSON.stringify(clubs);
 	clubs = JSON.parse(localStorage.getItem("clubs"));
 	n = clubs.length;
-	clubs[n] = ([1599, "Ptr", "Putter",   0, 0, 0, 0, 60.0,   3,   3]);
+	clubs[n] = ([0, "Cust", "clubName",   0, 0, 0, 0, 0.0,   0,   0]);
 	str = JSON.stringify(clubs);
 	localStorage.setItem("clubs", str);
 	window.location.href = "clubDistanceList.html"; 
