@@ -83,15 +83,32 @@ var chartData = {
 // https://www.w3schools.com/js/js_ajax_intro.asp
 
 function loadContent() {
+  dayjs().format();
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 
         && this.status == 200) {
-      //document.getElementById("nice").innerHTML = this.responseText;
-      //perhaps to set time stackoverflow is making suggestions to use setInterval
+      //see if we have a time, if not get it and set it to local storage
+      if (!localStorage.getItem("Comparetime")){
+        gimmeTheDay = dayjs().format("YYYY-MM-DD-HH");
+        localStorage.setItem("Comparetime",gimmeTheDay );}
       
-      if (!localStorage.getItem("Covid"))
-        localStorage.setItem("Covid", this.responseText);
+      //get the localstorage and tf it into date
+      CompareTime = localStorage.getItem("Comparetime");
+      let TrueCompareTime = dayjs(CompareTime);
+      
+      //get the current time
+      let date2 = dayjs();
+      
+      //compare the 2 times!
+      let overtime = date2.diff(TrueCompareTime, 'hours');
+      
+      //check if we have a covid item OR if we havent gotten a new one within 24 hours.
+      if (!localStorage.getItem("Covid") || overtime >= 24){
+        //set the new time and the new chart.
+        gimmeTheDay = dayjs().format("YYYY-MM-DD-HH");
+        localStorage.setItem("Comparetime",gimmeTheDay );
+        localStorage.setItem("Covid", this.responseText);}
       covidJson = localStorage.getItem("Covid");
       covidJsObj = JSON.parse(covidJson);
       newConfirmedOver1000 = [];
@@ -106,7 +123,9 @@ function loadContent() {
             "TotalDeaths": c.TotalDeaths,
             "Population": populations[c.Slug],
             "TotalConfirmedPer100000": 100000 * c.TotalConfirmed / populations[c.Slug],
+            
           });
+          _.orderBy(newConfirmedOver1000, 'TotalConfirmedPer100000', 'desc');
         }
       }
       newConfirmedOver1000 =_.orderBy(newConfirmedOver1000,'TotalConfirmedPer100000', 'desc');
@@ -137,7 +156,6 @@ function loadContent() {
         = "Covid 19 Hotspots (" + 
         dayjs().format("YYYY-MM-DD") + ")" ;
       //sort by
-       _.sortBy(chartData, 'TotalConfirmedPer100000');
       myChart = new Chart(ctx, chartData); 
              
       
