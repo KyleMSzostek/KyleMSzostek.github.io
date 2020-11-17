@@ -82,8 +82,12 @@ var chartData = {
 // code below modified from: 
 // https://www.w3schools.com/js/js_ajax_intro.asp
 
+
 function loadContent() {
   dayjs().format();
+  //put the info into the divs on release
+  document.getElementById("1A").innerHTML = "Covid - 19";
+  document.getElementById("1B").innerHTML = "Covid - 19, also known as the corana virus is a novel form of SARS, that was discovered in 2019";
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 
@@ -95,6 +99,7 @@ function loadContent() {
       
       //get the localstorage and tf it into date
       CompareTime = localStorage.getItem("Comparetime");
+      //console.log(CompareTime);
       let TrueCompareTime = dayjs(CompareTime);
       
       //get the current time
