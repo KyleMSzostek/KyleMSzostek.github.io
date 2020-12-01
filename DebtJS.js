@@ -16,16 +16,16 @@ function loadDoc() {
   
   // pre-fill defaults for first loan year
   var defaultYear = loans[0].loan_year;
-  $("#loan_year0" + 1).val(defaultYear++);
+  $('#loan_year0'+1).val() == defaultYear++;
   //pre-fill default for amount
   var defaultLoanAmount = loans[0].loan_amount;
-  $("#loan_amt0" + 1).val(defaultLoanAmount.toFixed(2));
+  $('#loan_amt0'+1).val() ==defaultLoanAmount.toFixed(2);
   //pre-fill for default loan
   var defaultInterestRate = loans[0].loan_int_rate;
-  $("#loan_int0" + 1).val(defaultInterestRate);
+  $('#loan_int0'+1).val() == defaultInterestRate;
   //pre-fill for default interest
   var loanWithInterest = loans[0].loan_amount * (1 + loans[0].loan_int_rate);
-  $("#loan_bal0" + 1).text(toCommaFix(loanWithInterest));
+  $('#loan_bal0'+1).val() == toComma(loanWithInterest.toFixed(2));
   
   // pre-fill defaults for other loan years
   for(var i=2; i<6; i++) {
@@ -89,11 +89,13 @@ function updateLoansArray() {
   //checkers for numbers
   let tester = /^-?\d*\.?\d*$/;
 
+  //if tester is false make red!
   if(!tester.test($(`#loan_year01`).val())){
     valid = false;
     $(`#loan_year01`).css("background-color", "red");
   }
   
+  //if tester is false make red
   for (i = 1; i < 6; i++) {
     if(!tester.test($(`#loan_amt0${i}`).val())){
       valid = false;
@@ -101,7 +103,7 @@ function updateLoansArray() {
     } 
   }
   
-  //check if interest is not a crazy number
+  //if tester is false make red
   if(!tester.test($(`#loan_int01`).val())){
     valid = false;
     $(`#loan_int01`).css("background-color", "red");
@@ -126,7 +128,7 @@ function updateLoansArray() {
   }
 }
 
-//save button inspired by example using bracket as the example used it as well
+//save button inspired by example
 let saveForm = () => {
  localStorage.setItem(`savedInterest`, JSON.stringify(loans));
 }
